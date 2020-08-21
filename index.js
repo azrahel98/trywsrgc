@@ -1,16 +1,15 @@
 import express from 'express'
 import {ApolloServer} from 'apollo-server-express'
 import morgan from 'morgan'
-import typeDefs from './schema'
-import resolvers from './resolver'
-
-
+import typeDefs from './graphql/schema'
+import resolvers from './graphql/resolver'
+import data from './servicios/ws/setcookie'
+require('dotenv').config()
 const server = new ApolloServer({typeDefs,resolvers})
 const app = express()
 const port  = process.env.PORT || 8080
 
-
-console.log("asdf")
+data()
 app.use(morgan('short'))
 
 
